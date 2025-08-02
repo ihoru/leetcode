@@ -3,23 +3,23 @@
 from ic import ic  # type: ignore
 
 class Solution:
+    vowels = 'aeiouAEIOU'
+
     def reverseVowels(self, s: str) -> str:
         length = len(s)
         if length <= 1:
             return s
-        vowels = 'aeiou'
-        vowels += vowels.upper()
         right_index = length - 1
         res = []
         replace = {}
         for i, letter in enumerate(s):
             if i in replace:
                 letter = replace[i]
-            elif letter in vowels:
+            elif letter in self.vowels:
                 new_letter = None
                 while i <= right_index:
                     new_letter = s[right_index]
-                    if new_letter in vowels:
+                    if new_letter in self.vowels:
                         break
                     right_index -= 1
 
