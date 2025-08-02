@@ -6,25 +6,26 @@ class Solution:
     vowels = 'aeiouAEIOU'
 
     def reverseVowels(self, s: str) -> str:
-        length = len(s)
-        if length <= 1:
+        if len(s) <= 1:
             return s
-        right_index = length - 1
-        res = []
-        replace = {}
-        for i, letter in enumerate(s):
-            if i in replace:
-                letter = replace[i]
-            elif letter in self.vowels:
-                new_letter = None
-                while i <= right_index:
-                    new_letter = s[right_index]
-                    if new_letter in self.vowels:
-                        break
-                    right_index -= 1
-
-                replace[right_index] = letter
-                letter = new_letter
-                right_index -= 1
-            res.append(letter)
-        return ''.join(res)
+        
+        # Convert string to list for in-place modification
+        s_list = list(s)
+        left, right = 0, len(s) - 1
+        
+        # Two-pointer approach
+        while left < right:
+            # Find vowel from left
+            while left < right and s_list[left] not in self.vowels:
+                left += 1
+            
+            # Find vowel from right
+            while left < right and s_list[right] not in self.vowels:
+                right -= 1
+            
+            # Swap vowels
+            s_list[left], s_list[right] = s_list[right], s_list[left]
+            left += 1
+            right -= 1
+        
+        return ''.join(s_list)
