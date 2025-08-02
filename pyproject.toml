@@ -1,0 +1,29 @@
+[tool.ruff]
+include = [
+    "*.py",
+]
+exclude = [
+    ".git",
+    ".venv",
+    "venv",
+    "ENV",
+]
+
+# Same as Black.
+line-length = 88
+
+[tool.ruff.lint]
+# Enable the pycodestyle error (`E`) and warning (`W`) rules and Pyflakes (`F`).
+# See https://docs.astral.sh/ruff/rules/ for all available rules.
+select = ["E", "W", "F", "I", "B", "C4"]
+ignore = []
+
+# Allow autofix for all enabled rules (when `--fix`) is used.
+fixable = ["A", "B", "C", "D", "E", "F", "G", "I", "N", "Q", "S", "T", "W", "ANN", "ARG", "BLE", "COM", "DJ", "DTZ", "EM", "ERA", "EXE", "FBT", "ICN", "INP", "ISC", "NPY", "PD", "PGH", "PIE", "PL", "PT", "PTH", "PYI", "RET", "RSE", "RUF", "SIM", "SLF", "TCH", "TID", "TRY", "UP", "YTT"]
+unfixable = []
+
+# Allow unused variables when underscore-prefixed.
+dummy-variable-rgx = "^(_+|(_+[a-zA-Z0-9_]*[a-zA-Z0-9]+?))$"
+
+[tool.ruff.format]
+quote-style = "double"
